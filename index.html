@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <style>
+    .carousel {
+      display: inline-flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none
+    }
+    
+    .carousel-vertical {
+        flex-direction: column;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory
+    }
+    
+    .carousel-item {
+        box-sizing: content-box;
+        display: flex;
+        flex: none;
+        scroll-snap-align: start
+    }
+    
+    .carousel-start .carousel-item {
+        scroll-snap-align: start
+    }
+    
+    .carousel-center .carousel-item {
+        scroll-snap-align: center
+    }
+    
+    .carousel-end .carousel-item {
+        scroll-snap-align: end
+    }
+  </style>
+    <!-- <section
+    class="relative  bg-[url('/poster.png')] w-full h-full bg-cover bg-right bg-no-repeat"
+    >
+    <div
+    class="absolute inset-0 bg-gray-900/75 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
+    ></div>
+    <div class="hidden h-full w-full absolute" id="rax-video-container">
+        <video id="rax-video" class="h-full w-full rounded-lg">
+            <source
+              src="https://docs.material-tailwind.com/demo.mp4"over
+              type="video/mp4"
+            />
+          </video>
+    </div>
+    <div
+    class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-end lg:px-8"
+    >
+    <div class="max-w-xl ltr:sm:text-left rtl:sm:text-right">
+        <h1 class="text-3xl font-extrabold text-black sm:text-5xl tracking-wider">
+            Omnia X 
+
+        <strong class="block font-extrabold text-black tracking-wider"> MagSafe </strong>
+        </h1>
+
+        <p class="mt-4 max-w-lg text-black sm:text-xl/relaxed">
+            不限車款、車齡，每台車具備最新穎便捷充電方式！
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4 text-center">
+        <button
+            id="rax-play-button"
+            class="play_button block !w-full !rounded-full bg-[#4B9BE1] !px-16 !py-4 text-sm font-medium text-white shadow hover:bg-[#4B9BEE] focus:outline-none focus:ring active:bg-[#4B9BEE] sm:w-auto"
+        >
+                觀看影片
+        </button>
+        </div>
+    </div>
+    </div>
+    </section> -->
+   
+    <section class="overflow-hidden relative w-full h-full bg-[url('poster.png')] bg-contain bg-center bg-no-repeat  lg:h-screen flex flex-col justify-center items-start lg:justify-end">
+      <div class="hidden h-full w-full absolute bg-black" id="rax-video-container">
+        <video id="rax-video" class=" w-full rounded-lg">
+            <source
+              src="https://docs.material-tailwind.com/demo.mp4"over
+              type="video/mp4"
+            />
+          </video>
+    </div>
+      <div class="p-8 md:p-12 lg:px-16 lg:py-24 ">
+      <div class="relative  max-w-[11rem]">
+        <h1 class="font-extrabold text-black tracking-wider md:text-3xl">
+          Omnia X 
+
+      <strong class="block font-extrabold text-black tracking-wider md:text-3lx"> MagSafe </strong>
+      </h1>
+
+      <p class="mt-2 lg:mt-4 text-black text-[11px] md:text-sm">
+          不限車款、車齡，每台車具備最新穎便捷充電方式！
+      </p>
+
+      <div class="mt-2 lg:mt-8 flex flex-wrap gap-4 text-center">
+      <button
+          id="rax-play-button"
+          class="play_button block !lg:w-full !rounded-full bg-[#4B9BE1] !md:px-16 !md:py-4 md:px-8 md:py-4 text-[11px] md:text-sm p-1 font-medium text-white shadow hover:bg-[#4B9BEE] focus:outline-none focus:ring active:bg-[#4B9BEE] sm:w-auto"
+      >
+              觀看影片
+      </button>
+          </div>
+         
+      </div>
+      </div>
+    </section>
+
+    <section class="bg-black ">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-8">
+        <div class="mx-auto max-w-2xl lg:max-w-4xl ">
+          <dl class="grid max-w-xl grid-cols-4 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-4 lg:gap-y-16">
+            <div class="relative lg:pl-16  flex flex-col justify-center ">
+              <dt class="text-[11px] md:text-base font-semibold leading-7 text-white flex flex-col justify-center items-center gap-4">
+                <div class="flex  items-center justify-center rounded-lg h-10 w-10 md:h-full md:w-full md:h-full">
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M37.9167 45.1921V41.6689H41.0833V45.1921H37.9167ZM36 31.0066H43V28.596C43 28.2252 42.8611 27.8852 42.5833 27.5762C42.3056 27.2671 42 27.1126 41.6667 27.1126H37.3333C37 27.1126 36.6944 27.2671 36.4167 27.5762C36.1389 27.8852 36 28.2252 36 28.596V31.0066ZM27.3333 54C26.6708 54 26.1163 53.7517 25.6696 53.255C25.2232 52.7581 25 52.1411 25 51.404V43.9868H36.9167V45.0066C36.9167 45.362 37.0314 45.6672 37.2608 45.9222C37.4903 46.1772 37.7649 46.3046 38.0846 46.3046H40.9229C41.261 46.3046 41.5389 46.1772 41.7567 45.9222C41.9744 45.6672 42.0833 45.362 42.0833 45.0066V43.9868H54V51.404C54 52.1411 53.7768 52.7581 53.3304 53.255C52.8838 53.7517 52.3292 54 51.6667 54H27.3333ZM25 42.8742V33.6026C25 32.8656 25.2232 32.2485 25.6696 31.7516C26.1163 31.2549 26.6708 31.0066 27.3333 31.0066H35V28.596C35 27.8589 35.2232 27.2419 35.6696 26.745C36.1163 26.2483 36.6708 26 37.3333 26H41.6667C42.3292 26 42.8838 26.2483 43.3304 26.745C43.7768 27.2419 44 27.8589 44 28.596V31.0066H51.6667C52.3292 31.0066 52.8838 31.2549 53.3304 31.7516C53.7768 32.2485 54 32.8656 54 33.6026V42.8742H42.0833V41.8543C42.0833 41.4788 41.9732 41.1687 41.7529 40.9239C41.5324 40.6788 41.2532 40.5563 40.9154 40.5563H38.0771C37.7571 40.5563 37.4838 40.6788 37.2571 40.9239C37.0301 41.1687 36.9167 41.4788 36.9167 41.8543V42.8742H25Z" fill="white"/>
+                    <circle cx="40" cy="40" r="39.5" stroke="white"/>
+                    </svg>                
+                </div>
+                提升便利性
+              </dt>
+            </div>
+            <div class="relative lg:pl-16 flex flex-col justify-center">
+              <dt class="relative  text-[11px] md:text-base font-semibold leading-7 text-white flex flex-col justify-center items-center gap-4">
+                <div class=" relative items-center justify-center rounded-lg h-10 w-10 md:h-full md:w-full flex">
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M38.8126 39.0234H37.4605C37.3536 39.0234 37.2772 38.9688 37.2314 38.8596C37.1855 38.7505 37.1932 38.6459 37.2543 38.5458L39.5803 34.5204C39.6185 34.4568 39.6644 34.4158 39.7178 34.3976C39.7713 34.3794 39.8286 34.384 39.8897 34.4113C39.9508 34.4386 39.9947 34.4818 40.0215 34.5409C40.0482 34.6 40.0578 34.666 40.0501 34.7388L39.7407 37.7134H41.3449C41.4519 37.7134 41.5282 37.7726 41.5741 37.8908C41.6199 38.0091 41.6085 38.1182 41.5397 38.2183L38.9387 41.9298C38.9005 41.9844 38.8546 42.0185 38.8012 42.0322C38.7477 42.0458 38.6942 42.039 38.6407 42.0117C38.5873 41.9844 38.5472 41.9435 38.5204 41.8889C38.4937 41.8343 38.4841 41.7706 38.4918 41.6978L38.8126 39.0234Z" fill="white"/>
+                    <path d="M28.5474 48.8497C28.421 48.975 28.2708 49.0219 28.097 48.9906C27.9231 48.9593 27.7888 48.881 27.694 48.7558C26.2399 47.2529 25.0941 45.5387 24.2565 43.6132C23.4188 41.6877 23 39.5978 23 37.3435C23 35.0892 23.4346 32.968 24.3039 30.9799C25.1731 28.9917 26.3506 27.2619 27.8362 25.7903C29.3218 24.3188 31.0682 23.1525 33.0754 22.2915C35.0826 21.4305 37.2241 21 39.5 21C41.7759 21 43.9174 21.4305 45.9246 22.2915C47.9318 23.1525 49.6782 24.3188 51.1638 25.7903C52.6494 27.2619 53.8269 28.9917 54.6961 30.9799C55.5654 32.968 56 35.0892 56 37.3435C56 39.5665 55.5812 41.6486 54.7435 43.5897C53.9059 45.5309 52.7601 47.2529 51.306 48.7558C51.1796 48.881 51.0295 48.9593 50.8556 48.9906C50.6818 49.0219 50.5474 48.975 50.4526 48.8497C50.3262 48.7245 50.2866 48.5758 50.3341 48.4036C50.3815 48.2314 50.4684 48.0826 50.5948 47.9574C51.954 46.5798 53.0208 44.9908 53.7953 43.1905C54.5697 41.3902 54.9569 39.4412 54.9569 37.3435C54.9569 33.0854 53.4555 29.4692 50.4526 26.4948C47.4497 23.5204 43.7989 22.0332 39.5 22.0332C35.2011 22.0332 31.5503 23.5204 28.5474 26.4948C25.5445 29.4692 24.0431 33.0854 24.0431 37.3435C24.0431 39.4412 24.4224 41.3902 25.181 43.1905C25.9397 44.9908 26.9986 46.5798 28.3578 47.9574C28.4842 48.1139 28.579 48.2705 28.6422 48.427C28.7055 48.5836 28.6739 48.7245 28.5474 48.8497ZM33.9052 43.5428C33.7787 43.668 33.6444 43.715 33.5022 43.6837C33.3599 43.6524 33.2256 43.5897 33.0991 43.4958C32.3089 42.6818 31.6925 41.7581 31.25 40.7249C30.8075 39.6917 30.5862 38.5646 30.5862 37.3435C30.5862 34.9014 31.4555 32.8193 33.194 31.0973C34.9325 29.3753 37.0345 28.5143 39.5 28.5143C41.9655 28.5143 44.0675 29.3753 45.806 31.0973C47.5445 32.8193 48.4138 34.9014 48.4138 37.3435C48.4138 38.5333 48.1925 39.6526 47.75 40.7014C47.3075 41.7503 46.6911 42.6818 45.9009 43.4958C45.7744 43.621 45.6401 43.6915 45.4978 43.7071C45.3556 43.7228 45.2213 43.668 45.0948 43.5428C45 43.4175 44.9526 43.2845 44.9526 43.1436C44.9526 43.0027 45.0158 42.8853 45.1422 42.7913C45.8376 42.1025 46.3829 41.2885 46.778 40.3492C47.1731 39.4099 47.3707 38.408 47.3707 37.3435C47.3707 35.1832 46.6042 33.3437 45.0711 31.8252C43.5381 30.3067 41.681 29.5475 39.5 29.5475C37.319 29.5475 35.4619 30.3067 33.9289 31.8252C32.3958 33.3437 31.6293 35.1832 31.6293 37.3435C31.6293 38.408 31.8269 39.4099 32.222 40.3492C32.6171 41.2885 33.1624 42.1025 33.8578 42.7913C33.9842 42.9166 34.0553 43.0418 34.0711 43.1671C34.0869 43.2923 34.0316 43.4175 33.9052 43.5428Z" fill="white"/>
+                    <path d="M28.5474 48.8497C28.421 48.975 28.2708 49.0219 28.097 48.9906C27.9231 48.9593 27.7888 48.881 27.694 48.7558C26.2399 47.2529 25.0941 45.5387 24.2565 43.6132C23.4188 41.6877 23 39.5978 23 37.3435C23 35.0892 23.4346 32.968 24.3039 30.9799C25.1731 28.9917 26.3506 27.2619 27.8362 25.7903C29.3218 24.3188 31.0682 23.1525 33.0754 22.2915C35.0826 21.4305 37.2241 21 39.5 21C41.7759 21 43.9174 21.4305 45.9246 22.2915C47.9318 23.1525 49.6782 24.3188 51.1638 25.7903C52.6494 27.2619 53.8269 28.9917 54.6961 30.9799C55.5654 32.968 56 35.0892 56 37.3435C56 39.5665 55.5812 41.6486 54.7435 43.5897C53.9059 45.5309 52.7601 47.2529 51.306 48.7558C51.1796 48.881 51.0295 48.9593 50.8556 48.9906C50.6818 49.0219 50.5474 48.975 50.4526 48.8497C50.3262 48.7245 50.2866 48.5758 50.3341 48.4036C50.3815 48.2314 50.4684 48.0826 50.5948 47.9574C51.954 46.5798 53.0208 44.9908 53.7953 43.1905C54.5697 41.3902 54.9569 39.4412 54.9569 37.3435C54.9569 33.0854 53.4555 29.4692 50.4526 26.4948C47.4497 23.5204 43.7989 22.0332 39.5 22.0332C35.2011 22.0332 31.5503 23.5204 28.5474 26.4948C25.5445 29.4692 24.0431 33.0854 24.0431 37.3435C24.0431 39.4412 24.4224 41.3902 25.181 43.1905C25.9397 44.9908 26.9986 46.5798 28.3578 47.9574C28.4842 48.1139 28.579 48.2705 28.6422 48.427C28.7055 48.5836 28.6739 48.7245 28.5474 48.8497ZM33.9052 43.5428C33.7787 43.668 33.6444 43.715 33.5022 43.6837C33.3599 43.6524 33.2256 43.5897 33.0991 43.4958C32.3089 42.6818 31.6925 41.7581 31.25 40.7249C30.8075 39.6917 30.5862 38.5646 30.5862 37.3435C30.5862 34.9014 31.4555 32.8193 33.194 31.0973C34.9325 29.3753 37.0345 28.5143 39.5 28.5143C41.9655 28.5143 44.0675 29.3753 45.806 31.0973C47.5445 32.8193 48.4138 34.9014 48.4138 37.3435C48.4138 38.5333 48.1925 39.6526 47.75 40.7014C47.3075 41.7503 46.6911 42.6818 45.9009 43.4958C45.7744 43.621 45.6401 43.6915 45.4978 43.7071C45.3556 43.7228 45.2213 43.668 45.0948 43.5428C45 43.4175 44.9526 43.2845 44.9526 43.1436C44.9526 43.0027 45.0158 42.8853 45.1422 42.7913C45.8376 42.1025 46.3829 41.2885 46.778 40.3492C47.1731 39.4099 47.3707 38.408 47.3707 37.3435C47.3707 35.1832 46.6042 33.3437 45.0711 31.8252C43.5381 30.3067 41.681 29.5475 39.5 29.5475C37.319 29.5475 35.4619 30.3067 33.9289 31.8252C32.3958 33.3437 31.6293 35.1832 31.6293 37.3435C31.6293 38.408 31.8269 39.4099 32.222 40.3492C32.6171 41.2885 33.1624 42.1025 33.8578 42.7913C33.9842 42.9166 34.0553 43.0418 34.0711 43.1671C34.0869 43.2923 34.0316 43.4175 33.9052 43.5428Z" fill="white"/>
+                    <rect x="39" y="49.5" width="1" height="10" rx="0.5" fill="white"/>
+                    <circle cx="40" cy="40" r="39.5" stroke="white"/>
+                    </svg>
+                    
+                </div>
+                MagSafe
+                <p class="absolute w-full h-full -bottom-5 left-0 flex flex-col justify-end items-center">
+                  無線充電</p>
+              </dt>
+            </div>
+            <div class="relative lg:pl-16  flex flex-col justify-center">
+              <dt class="text-[11px] md:text-base font-semibold leading-7 text-white flex flex-col justify-center items-center gap-4">
+                <div class="flex items-center justify-center rounded-lg h-10 w-10 md:h-full md:w-full">
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="40" cy="40" r="39.5" stroke="white"/>
+                    <path d="M40 56.1053C42.6906 55.1858 44.9436 53.4131 46.7588 50.7872C48.5738 48.1613 49.6318 45.2298 49.9328 41.9927H40V27.9977L30.847 31.621C30.5734 31.7384 30.3613 31.9144 30.2108 32.1491C30.0603 32.3838 29.9851 32.6479 29.9851 32.9413V40.3499C29.9851 40.6333 29.9896 40.8973 29.9986 41.142C30.0079 41.3864 30.0308 41.67 30.0672 41.9927H40V56.1053ZM40 57C39.8632 57 39.7219 56.9853 39.576 56.956C39.4299 56.9267 39.2884 56.8826 39.1516 56.824C36.0232 55.5037 33.5491 53.3204 31.7295 50.274C29.9098 47.2274 29 43.9193 29 40.3499V32.9853C29 32.4672 29.1413 31.9904 29.424 31.555C29.7069 31.1199 30.0626 30.8095 30.4912 30.6237L39.1926 27.176C39.4756 27.0587 39.7447 27 40 27C40.2553 27 40.5244 27.0587 40.8074 27.176L49.5088 30.6237C49.9374 30.8095 50.2931 31.1199 50.576 31.555C50.8587 31.9904 51 32.4672 51 32.9853V40.3499C51 43.9193 50.0902 47.2274 48.2705 50.274C46.4509 53.3204 43.9768 55.5037 40.8484 56.824C40.7116 56.8826 40.5701 56.9267 40.424 56.956C40.2781 56.9853 40.1368 57 40 57Z" fill="white"/>
+                    </svg>
+                    
+                </div>
+                安全快速
+              </dt>
+            </div>
+            <div class="relative lg:pl-16  flex flex-col justify-center">
+              <dt class="text-[11px] md:text-base font-semibold text-white leading-7  flex flex-col justify-center items-center gap-4">
+                <div class="flex items-center justify-center rounded-lg h-10 w-10 md:h-full md:w-full">
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="40" cy="40" r="39.5" stroke="white"/>
+                    <path d="M39.4866 56V47.1016L32.6417 53.8896L31.9003 53.1478L39.4866 45.5615V40.5134H34.4385L26.8804 48.0714L26.139 47.3296L32.8984 40.5134H24V39.4866H32.8984L26.1104 32.6417L26.8522 31.9003L34.4385 39.4866H39.4866V34.4385L31.9286 26.8804L32.6704 26.139L39.4866 32.8697V24H40.5134V32.8697L47.3583 26.1104L48.0997 26.8522L40.5134 34.4385V39.4866H45.5615L53.1196 31.9286L53.861 32.6704L47.1303 39.4866H56V40.5134H47.1303L53.8896 47.3583L53.1478 48.0997L45.5615 40.5134H40.5134V45.5615L48.0997 53.1478L47.3583 53.8896L40.5134 47.1016V56H39.4866Z" fill="white"/>
+                    </svg>
+                    
+                </div>
+                充電不過熱
+              </dt>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 bg-[url('/section2.png')] bg-contain bg-center bg-no-repeat min-h-96 lg:h-screen flex flex-col justify-center items-center">
+        <div class="p-8 md:p-12 lg:px-16 lg:py-24 ">
+        <div class="mx-auto max-w-lg text-center">
+            <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
+                3 in 1 充電技術
+            </h2>
+            <div class="flex justify-center items-center gap-2">
+                <p class="text-gray-500 sm:mt-4 sm:block ">
+                    同時充電數量
+                  
+                </p>
+                <p class="text-[#BF8D75] sm:mt-4 sm:block animate-bounce">+2</p>
+            </div>
+           
+        </div>
+    
+        <div class="mx-auto mt-8 max-w-xl hidden">
+            <form action="#" class="sm:flex sm:gap-4">
+            <div class="sm:flex-1">
+                <label for="email" class="sr-only">Email</label>
+    
+                <input
+                type="email"
+                placeholder="Email address"
+                class="w-full rounded-md border-gray-200 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none focus:ring focus:ring-yellow-400"
+                />
+            </div>
+    
+            <button
+                type="submit"
+                class="group mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-rose-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-yellow-400 sm:mt-0 sm:w-auto"
+            >
+                <span class="text-sm font-medium"> Sign Up </span>
+    
+                <svg
+                class="size-5 rtl:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+                </svg>
+            </button>
+            </form>
+        </div>
+        </div>
+    </section>
+    <section class="relative pb-16 bg-body overflow-hidden bg-gray-100">
+      <image src="banner2.png"></image>
+      <div class="mt-8 container mx-auto px-4">
+        <div class="relative">
+          <div class="max-w-xl mx-auto mb-16 text-center">
+            <h2 class="font-heading text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-medium text-black tracking-tight mb-6">獨家高效率充電法</h2>
+            <p class="text-xl text-gray-400">Qi2 無線充電技術，真 15W 無線充電</p>
+          </div>
+          <div class="flex flex-wrap -mx-4">
+            <div class="w-full lg:w-1/5 px-4 mb-8 lg:mb-0">
+              <div class="max-w-md mx-auto h-full p-8 rounded-3xl shadow-box-violet overflow-hidden bg-white">
+                <div class="flex py-4 items-center justify-center">
+                  <div>
+                    <h4 class="text-2xl font-medium text-black ">
+                      <span class="block">磁吸力 ></span>
+                      <span>1.2 KG</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full lg:w-1/5 px-4 mb-8 lg:mb-0">
+              <div class="max-w-md mx-auto h-full p-8 rounded-3xl shadow-box-violet overflow-hidden bg-white">
+                <div class="flex py-4 items-center justify-center">
+                  <div>
+                    <h4 class="text-2xl font-medium text-black ">
+                      <span class="block">MagSafe</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full lg:w-1/5 px-4 mb-8 lg:mb-0">
+              <div class="max-w-md mx-auto h-full p-8 rounded-3xl shadow-box-violet overflow-hidden bg-white">
+                <div class="flex py-4 items-center justify-center">
+                  <div>
+                    <h4 class="text-2xl font-medium text-black ">
+                      <span class="block">多種</span>
+                      <span>支架</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full lg:w-1/5 px-4 mb-8 lg:mb-0">
+              <div class="max-w-md mx-auto h-full p-8 rounded-3xl shadow-box-violet overflow-hidden bg-white">
+                <div class="flex py-4 items-center justify-center">
+                  <div>
+                    <h4 class="text-2xl font-medium text-black ">
+                      <span class="block">Qi2</span>
+                      <span>15W</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full lg:w-1/5 px-4 mb-8 lg:mb-0">
+              <div class="max-w-md mx-auto h-full p-8 rounded-3xl shadow-box-violet overflow-hidden bg-white">
+                <div class="flex py-4 items-center justify-center">
+                  <div>
+                    <h4 class="text-2xl font-medium text-black ">
+                      <span class="block">USB-C接孔</span>
+                     
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <image class="p-12" src="banner3.png"></image>
+      </div>
+      
+    </section>
+    <section class="relative pb-16 bg-body overflow-hidden bg-[#BF8D75]">
+      <div class="mt-8 container mx-auto px-4">
+        <div class="relative">
+          <div class="max-w-xl mx-auto mb-16 text-center">
+            <h2 class="font-heading text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-medium text-white tracking-wider mb-6">$ 12,463,411</h2>
+            <p class="text-xl text-black">突破車用充電器募資紀錄</p>
+            <p class="text-lg text-black/70">Omnia X MagSafe 車用磁吸無線充電器，超過 1,200 萬募資成績</p>       
+          </div>
+        </div>
+        <image class=" mx-auto" src="banner4.png"></image>
+      </div>
+      
+    </section>
+    <section class=" mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      
+      <dl class="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+              <a href="#" class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+                  <img
+                    alt=""
+                    src="/news1.png"
+                    class="h-56 w-full rounded-md object-fill opacity-50 hover:opacity-100"
+                  />
+                
+                  <div class="mt-2">
+                    <dl class="flex items-center gap-2 py-2">
+                      <div class="">
+                        <img src="/avatar1.png"  alt="">
+                      </div>
+
+                
+                      <div>
+                        <dd class="font-medium">我是賴瑞 /iamLarrie</dd>
+                        <dd class="text-[11px]">無線充電效率可以說是非常的高，支援 Qi2 充電技術，手錶跟手機同時充電輸出，也不會影響到各自的充電效率</dd>
+                      </div>
+                    </dl>
+              
+                  </div>
+                </a>
+              </div>
+    
+              <div>
+                <a href="#" class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+                    <img
+                      alt=""
+                      src="/news2.png"
+                      class="h-56 w-full rounded-md object-fill opacity-50 hover:opacity-100"
+                    />
+                  
+                    <div class="mt-2">
+                      <dl class="flex items-center gap-2 py-2">
+                        <div class="">
+                          <img src="/avatar2.png"  alt="">
+                        </div>
+
+                  
+                        <div>
+                          <dd class="font-medium">APPLEFANS蘋果迷</dd>
+                          <dd class="text-[11px]">幫 iPhone 充電以外，還有多一組幫 Apple Watch 或 AirPods Pro 充電，讓我們隨身有兩三台蘋果裝置「蘋果迷」隨時可在車上補電。</dd>
+                        </div>
+                      </dl>
+                
+                    </div>
+                  </a>
+                </div>
+    
+                <div>
+                  <a href="#" class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+                      <img
+                        alt=""
+                        src="/news3.png"
+                        class="h-56 w-full rounded-md object-fill opacity-50 hover:opacity-100"
+                      />
+                    
+                      <div class="mt-2">
+                        <dl class="flex items-center gap-2 py-2">
+                          <div class="">
+                            <img src="/avatar3.png"  alt="">
+                          </div>
+  
+                    
+                          <div>
+                            <dd class="font-medium">人夫阿康 X 科技日常</dd>
+                            <dd class="text-[11px]">開車外出兩天以上，就不需要再另外帶充電線，因為你開車的時候就可以幫我們 Apple Watch 補電了，真的超級方便哦！</dd>
+                          </div>
+                        </dl>
+                  
+                      </div>
+                    </a>
+                  </div>
+      </dl>
+
+      <dl class="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-2 lg:grid-cols-2 lg:px-64">
+          <article class="rounded-xl border-2 border-gray-100 bg-white">
+              <div class="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
+                <a href="#" class="block shrink-0">
+                  <img
+                    alt=""
+                    src="avatar4.png"
+                    class="size-14 rounded-lg object-cover"
+                  />
+                </a>
+            
+                <div>
+                  <h3 class="font-medium sm:text-lg">
+                    <a href="#" class="hover:underline"> Joeman </a>
+                  </h3>
+            
+                  <p class="text-[12px] text-gray-700">
+                    我找很久超級好用 MagSafe 車用充電器，搭配特斯拉，我覺得非常適合
+                  </p>
+            
+                  
+                </div>
+              </div>
+            
+            
+            </article>
+    
+            <article class="rounded-xl border-2 border-gray-100 bg-white">
+              <div class="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
+                <a href="#" class="block shrink-0">
+                  <img
+                    alt=""
+                    src="avatar5.png"
+                    class="size-14 rounded-lg object-cover"
+                  />
+                </a>
+            
+                <div>
+                  <h3 class="font-medium sm:text-lg">
+                    <a href="#" class="hover:underline"> 蘋果仁 </a>
+                  </h3>
+            
+                  <p class="text-[12px] text-gray-700">
+                    山路彎來彎去、下山要一直煞車也完全不擔心掉落，真的很穩
+                  </p>
+            
+                  
+                </div>
+              </div>
+            
+            
+            </article>
+    
+      </dl>
+   </section>
+   <section class="relative pb-16 bg-body overflow-hidden">
+    <div class="mt-8 container mx-auto px-4">
+      <div class="relative">
+        <div class="max-w-2xl mx-auto mb-8 text-center">
+          <h2 class="font-heading text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-medium text-black tracking-tight mb-6">不限車款、不限車齡</h2>
+          <p class="text-xl text-black"></p>
+          <p class="text-lg text-black/70">「全方位」充電解決方案</p>       
+        </div>
+      </div>
+    </div>
+    <image class=" mx-auto" src="banner5.png"></image>
+    <div class="max-w-2xl mx-auto my-8 text-center">
+      <p class="text-lg text-black/70">所有車款皆適用，每台車都是萬能行動充電站</p>       
+    </div>
+    <div class="carousel carousel-center rounded-box gap-4">
+      <div class="carousel-item flex flex-col items-center">
+        <img src="Tesla.png" alt="Pizza" />
+        <p>電動車</p>
+      </div>
+      <div class="carousel-item flex flex-col items-center">
+        <img
+          src="SUV.png"
+          alt="Pizza" />
+          <p>休旅車</p>
+      </div>
+      <div class="carousel-item flex flex-col items-center">
+        <img
+          src="Sport Car.png"
+          alt="Pizza" />
+          <p>跑車</p>
+      </div>
+      <div class="carousel-item flex flex-col items-center">
+        <img
+          src="Sedan.png"
+          alt="Pizza" />
+          <p>一般轎車</p>
+      </div>
+      <div class="carousel-item flex flex-col items-center">
+        <img src="RV.png" alt="Pizza" />
+        <p>露營車</p>
+      </div>
+    </div>
+    <div class="mt-16 container mx-auto px-4">
+      <div class="relative">
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
+          <div class="rounded-lg bg-gray-200">
+            <image class="rounded-lg" src="banner5.png"></image>
+          </div>
+          <div class="rounded-lg  flex flex-col justify-center items-center">
+              <p class="text-xl text-black">打破車用充電器框架</p>
+              <p class="text-lg text-black/70">一次充飽多個裝置</p>       
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </section>
+  <section class="relative pb-16 bg-body overflow-hidden">
+    <image class=" mx-auto" src="banner7.png"></image>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-32 py-8">
+      <div class="rounded-lg relative -left-[50px]">
+        <image src="banner8.png"></image>
+      </div>
+      <div class="rounded-lg col-span-2 flex flex-col justify-center gap-8 lg:max-w-[70%] items-center md:items-start">
+          <h2 class="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-medium !font-extrabold text-black tracking-tight">完美充電 無線生態</h2>
+          <p class="text-xl text-black">與 Prelude X MagSafe 完美融合，最大化充電效率，無線磁吸車充搭配無線行動電源，從出發到抵達，打造無縫接軌的充電體驗</p> 
+          <image class="" src="RD Logo.png" width="92" height="50"></image>    
+      </div>
+    </div>
+  </section>
+  <section class="mx-auto md:w-[80%] w-full relative mb-6">
+    <div class="carousel  rounded-md mx-auto">
+      <div id="item1" class="carousel-item w-full">
+        <img
+          src="carosol1.png"
+          class="w-full" />
+      </div>
+      <div id="item2" class="carousel-item w-full">
+        <img
+          src="carosol2.png"
+          class="w-full" />
+      </div>
+      <div id="item3" class="carousel-item w-full">
+        <img
+          src="carosol3.png"
+          class="w-full" />
+      </div>
+      <div id="item4" class="carousel-item w-full">
+        <img
+        src="carosol1.png"
+          class="w-full" />
+      </div>
+     
+    </div>
+    <div class="absolute z-10 bottom-5 flex w-full justify-center py-2 items-center gap-8">
+      <a href="#item1" class="carosol_btn bg-black/80 text-white font-bold md:p-2 md:px-4 md:text-[15px] rounded-full text-[12px] p-1"><p>1.2KG 磁吸力</p></a>
+      <a href="#item2" class="bg-white/80 text-black carosol_btn  font-bold md:p-2 md:px-4 md:text-[15px] rounded-full text-[12px] p-1">科技感外型</a>
+      <a href="#item3" class="bg-white/80 text-black carosol_btn font-bold  md:p-2 md:px-4 md:text-[15px] rounded-full text-[12px] p-1">透明黑化面蓋</a>
+    </div>
+   
+    
+  </section>
+  <section class="relative pb-16 bg-body overflow-hidden">
+    <div class="mt-8 container mx-auto px-4">
+      <div class="relative">
+        <div class="max-w-4xl mx-auto mb-8 text-center">
+          <h2 class="font-heading text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-medium text-black tracking-tight mb-6">支援 QC / PD3.0 高效輸出</h2>
+          <p class="text-xl text-black">飆速配備 | 85W 三孔車用快充頭</p>      
+        </div>
+      </div>
+    </div>
+    <image class=" mx-auto" src="banner9.png"></image>
+    <div class="mt-8 max-w-3xl mx-auto px-4">
+      <image class=" mx-auto" src="banner10.png"></image>
+      </div>
+    </div>
+    <div class="mt-16 container mx-auto px-4">
+      <div class="relative">
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
+          <div class="rounded-lg bg-gray-200">
+            <image class="rounded-lg" src="banner11.png"></image>
+          </div>
+          <div class="rounded-lg  flex flex-col justify-center items-center">
+              <p class="text-xl text-black">智慧自動分流</p>
+              <p class="text-lg text-black/70">依照不同裝置, 提供相應充電瓦數</p>       
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="relative pb-16 bg-body overflow-hidden">
+    <div class="mt-8 container mx-auto px-4">
+      <div class="relative">
+        <div class="max-w-4xl mx-auto mb-8 text-center">
+          <h2 class="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-black tracking-tight mb-6">依照車型，選擇不同固定方式 !</h2>   
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 max-w-3xl mx-auto px-4">
+      <image class=" mx-auto" src="banner12.png"></image>
+      </div>
+    </div>
+    <div class="mt-16 container mx-auto px-4">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+        <div class="rounded-lg">
+          <image src="display1.png"></image>
+          <p class="text-center font-bold text-lg py-2">吸盤式通用支架</p>
+          <p class="text-center text-sm">不挑車款、黏性佳、極穩固，無痕強力黏膠可水洗清潔，吸力不減</p>
+        </div>
+        <div class="rounded-lg">
+          <image src="display2.png"></image>
+          <p class="text-center font-bold text-lg py-2">Tesla 電動車出風口支架</p>
+          <p class="text-center text-sm">質感金屬太空灰，穩固不易搖晃，特殊鎖勾旋轉固定設計，簡易安裝方便拆卸</p>
+        </div>
+        <div class="rounded-lg">
+          <image src="display3.png"></image>
+          <p class="text-center font-bold text-lg py-2">圓形專用出風口支架</p>
+          <p class="text-center text-sm">適用圓形出風口，伸縮設計，不傷出風口葉片，輕鬆好安裝</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="relative pb-16 bg-body overflow-hidden">
+    <div class="mt-12 max-w-2xl mx-auto px-4">
+      <image class=" mx-auto" src="banner13.png"></image>
+      </div>
+    </div>
+  </section>
+  <section class="relative pb-16 bg-body overflow-hidden">
+    <div class="mt-8 container mx-auto px-4">
+      <div class="relative">
+        <div class="max-w-4xl mx-auto mb-8 text-center">
+          <h2 class="font-heading text-md xs:text-lg sm:text-xl md:text-3xl font-medium text-black tracking-tight mb-2">用戶真實體驗分享</h2> 
+          <p class="text-center ">個人資料隱蔽處理，心得內容絕對真實</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 lg:mt-16 container mx-auto px-4">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+        <div class="rounded-lg">
+          <image src="share1.png" class="w-full"></image>
+          <div class="flex items-center gap-2 py-2">
+            <img src="customer1.png">
+            <div class="flex-grow">
+              <p class="font-bold">楊先生</p>
+              <p>終於找到有質感的磁吸車用充電器，賞心悅目又實用！</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-lg">
+          <image src="share2.png" class="w-full"></image>
+          <div class="flex items-center gap-2 py-2">
+            <img src="customer2.png">
+            <div class="flex-grow">
+              <p class="font-bold">Cheng</p>
+              <p>終於收到實品，嗯～安裝簡易，加分！質感也很好，手機手錶都能充電真的很方便呢</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-lg">
+          <image src="share3.png" class="w-full"></image>
+          <div class="flex items-center gap-2 py-2">
+            <img src="customer3.png">
+            <div class="flex-grow">
+              <p class="font-bold">楊先生</p>
+              <p>終於找到有質感的磁吸車用充電器，賞心悅目又實用！</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-lg">
+          <image src="share4.png" class="w-full"></image>
+          <div class="flex items-center gap-2 py-2">
+            <img src="customer4.png">
+            <div class="flex-grow">
+              <p class="font-bold">沈小姐</p>
+              <p>原本的無線車充一直有過熱跟電量充了等於沒充的困擾，但倍加能這款磁吸車用快充真心方便，手機充電沒有過熱問題！!</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-lg">
+          <image src="share5.png" class="w-full"></image>
+          <div class="flex items-center gap-2 py-2">
+            <img src="customer5.png">
+            <div class="flex-grow">
+              <p class="font-bold">Wange</p>
+              <p>支架穩固很特別，可以調整！磁吸強力，拿取方便，一機兩用，精緻時尚！</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-lg">
+          <image src="share6.png" class="w-full"></image>
+          <div class="flex items-center gap-2 py-2">
+            <img src="customer6.png">
+            <div class="flex-grow">
+              <p class="font-bold">Miaow</p>
+              <p>充電過程中從9v自動觸發到12v充電,使用規格書9v外再上一級充電有點意外</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+    </body>
+    <script>
+        const videoContainer = document.getElementById('rax-video-container');
+        const video = document.getElementById('rax-video');
+        const playButton = document.getElementById('rax-play-button');
+
+        // Add an event listener to the button
+        playButton.addEventListener('click', () => {
+            videoContainer.classList.remove('hidden')
+            if (video.paused) {
+                video.play(); // Play the video if it is paused
+                playButton.textContent = '暫停影片'; // Change button text to "Pause Video"
+            } else {
+                video.pause(); // Pause the video if it is playing
+                playButton.textContent = '播放影片'; // Change button text to "Play Video"
+            }
+        });
+
+        const buttons = document.querySelectorAll('.carosol_btn');
+        
+        buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            buttons.forEach(btn => {btn.classList.remove('bg-black/80'); btn.classList.remove('text-white');btn.classList.remove('bg-white/80'); btn.classList.remove('text-black');btn.classList.add('bg-white/80'); btn.classList.add('text-black')});
+            // Add active class to the clicked button
+            button.classList.remove('bg-white/80');
+            button.classList.remove('text-black');
+            button.classList.add('bg-black/80');
+            button.classList.add('text-white');
+        });
+        });
+        const container = document.querySelector('.carousel');
+        console.log(container)
+        // 創建 IntersectionObserver 實例
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  const index = Array.from(container.children).indexOf(entry.target);
+                    console.log(index)
+                    buttons.forEach(btn => {btn.classList.remove('bg-black/80'); btn.classList.remove('text-white');btn.classList.remove('bg-white/80'); btn.classList.remove('text-black');btn.classList.add('bg-white/80'); btn.classList.add('text-black')});
+                    // Add active class to the clicked button
+                    buttons[index].classList.remove('bg-white/80');
+                    buttons[index].classList.remove('text-black');
+                    buttons[index].classList.add('bg-black/80');
+                    buttons[index].classList.add('text-white');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // 獲取所有項目並註冊觀察者
+        document.querySelectorAll('.carousel-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</html>
+
+
